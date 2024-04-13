@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-md bg-primary mb-4">
+
+    <div class="container-fluid">
+      <a class="navbar-brand">Navbar</a>
+        
+      
+      <div class="dropdown" *ngIf="(currentUser$|async) as user" dropdown>
+        <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.userName}}</a>
+        <div class="dropdown-menu" dropdownMenu>
+            <a class="dropdown-item">Edit Profile</a>
+            <a class="dropdown-item">Logout</a>
+        </div>
+      </div>
+
+      <form class="d-flex" #LoginForm="ngForm" (ngSubmit)="login()" autocomplete="off" *ngIf="!(currentUser$|async)">
+        <input name="userName" class="form-control me-2" type="text" [(ngModel)]="model.userName" placeholder="userName">
+        <input name="password" class="form-control me-2" type="password" [(ngModel)]="model.password" placeholder="password">
+        <button class="btn btn-outline-success" type="submit">Login</button>
+      </form>
+    </div>
+  </nav>
